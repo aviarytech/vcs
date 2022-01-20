@@ -1,0 +1,9 @@
+{
+	"integrationFolder": "tests/tests",
+	"fixturesFolder": "tests/fixtures",
+	"testFiles": "**/*.spec.ts",
+	"pluginsFile": "tests/plugins/index.ts",
+	"supportFile": "tests/support/index.ts",
+	"videoCompression": 1,
+	"video": false
+}
