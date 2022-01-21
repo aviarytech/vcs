@@ -43,6 +43,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@aviarytech/crypto": "^0.0.10"
+		"@aviarytech/crypto": "^0.0.13"
 	}
 }
