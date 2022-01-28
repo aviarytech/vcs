@@ -1,3 +1,5 @@
+import type { DocumentLoader } from '@aviarytech/crypto';
+
 export interface VerificationResult {
 	verified: boolean;
 	/**
@@ -178,6 +180,33 @@ export interface VerifiableCredential extends Credential {
 export interface LinkedDataKey {
 	id: string;
 	type: string;
+}
+
+export interface ProofVerificationResult {
+	verified: boolean;
+	error?: string;
+}
+
+export interface LinkedDataSuite {
+	type: string;
+	date: string;
+	context: string;
+
+	createProof: (
+		document: any,
+		purpose: string,
+		documentLoader: DocumentLoader,
+		options: {
+			domain?: string;
+			challenge?: string;
+		}
+	) => Promise<LinkedDataProof>;
+
+	verifyProof: (
+		proofDocument: LinkedDataProof,
+		document: any,
+		documentLoader: DocumentLoader
+	) => Promise<ProofVerificationResult>;
 }
 
 // export interface SignatureSuite {
