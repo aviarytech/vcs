@@ -61,11 +61,12 @@ export class PresentationService {
 	static async provePresentation(
 		presentation: Presentation,
 		options: {
-			domain?: string;
-			challenge: string;
 			type: 'vc-jwt' | 'vc-ld';
 			suite: LinkedDataSuite;
 			documentLoader: DocumentLoader;
+			domain?: string;
+			challenge: string;
+			[key: string]: any;
 		}
 	): Promise<VerifiablePresentation> {
 		const { type, suite, documentLoader, ...opts } = options;
