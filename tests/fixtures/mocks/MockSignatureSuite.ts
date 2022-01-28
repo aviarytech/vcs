@@ -1,5 +1,4 @@
 import type { DocumentLoader, LinkedDataSuite, ProofVerificationResult } from '@aviarytech/crypto';
-import { LinkedDataProof } from '@aviarytech/crypto';
 import type { Credential, JWTCredential } from '../../../src/lib/interfaces';
 
 export class MockSignatureSuite implements LinkedDataSuite {
@@ -15,12 +14,12 @@ export class MockSignatureSuite implements LinkedDataSuite {
 		credential: Credential | JWTCredential,
 		purpose: string,
 		documentLoader: DocumentLoader
-	): Promise<LinkedDataProof> {
+	): Promise<any> {
 		return {};
 	}
 
 	async verifyProof(
-		proofDocument: LinkedDataProof,
+		proofDocument: any,
 		document: any,
 		documentLoader: DocumentLoader
 	): Promise<ProofVerificationResult> {

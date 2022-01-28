@@ -199,6 +199,7 @@ export interface LinkedDataSuite {
 		options: {
 			domain?: string;
 			challenge?: string;
+			[key: string]: any;
 		}
 	) => Promise<LinkedDataProof>;
 

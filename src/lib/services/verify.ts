@@ -3,7 +3,7 @@ import type {
 	VerifiablePresentation,
 	VerificationResult
 } from '../interfaces.js';
-import type { DocumentLoader, LinkedDataSuite } from '@aviarytech/crypto';
+import type { DocumentLoader } from '@aviarytech/crypto';
 
 /* Verifier Service */
 export class VerificationService {

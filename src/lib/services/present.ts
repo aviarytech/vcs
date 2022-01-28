@@ -6,7 +6,7 @@ import type {
 	VerifiablePresentation
 } from '../interfaces.js';
 import { ValidateCredential, ValidatePresentation } from '../utils/validation.js';
-import type { DocumentLoader, LinkedDataProof } from '@aviarytech/crypto';
+import type { DocumentLoader } from '@aviarytech/crypto';
 
 export class PresentationService {
 	@ValidateCredential(0)

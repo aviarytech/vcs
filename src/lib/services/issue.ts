@@ -1,12 +1,7 @@
-import type { DocumentLoader, LinkedDataProof, LinkedDataSuite } from '@aviarytech/crypto';
+import type { DocumentLoader } from '@aviarytech/crypto';
 import { NotImplementedError } from '../errors/NotImplementedError.js';
-import type {
-	Credential,
-	Presentation,
-	VerifiableCredential,
-	VerifiablePresentation
-} from '../interfaces.js';
-import { ValidateCredential, ValidatePresentation } from '../utils/validation.js';
+import type { Credential, VerifiableCredential } from '../interfaces.js';
+import { ValidateCredential } from '../utils/validation.js';
 
 export class IssuanceService {
 	@ValidateCredential(0)
