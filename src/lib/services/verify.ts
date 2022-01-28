@@ -6,7 +6,7 @@ import type {
 import type { DocumentLoader, LinkedDataSuite } from '@aviarytech/crypto';
 
 /* Verifier Service */
-export class VerifierService {
+export class VerificationService {
 	static async verifyCredential(
 		verifiableCredential: VerifiableCredential,
 		suite: any,

@@ -1,3 +1,3 @@
-export { IssuerService } from './services/issuer.js';
-export { VerifierService } from './services/verifier.js';
-export { HolderService } from './services/holder.js';
+export { IssuanceService } from './services/issue.js';
+export { VerificationService } from './services/verify.js';
+export { PresentationService } from './services/present.js';
