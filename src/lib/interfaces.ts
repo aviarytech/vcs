@@ -119,7 +119,7 @@ export interface Credential {
 	 * The JSON-LD type of the credential.
 	 */
 	type: Array<string> | string;
-	issuer: { id: string } | string;
+	issuer: { id: string, name?: string, image?: string, url?: string, type?: string } | string;
 	/**
 	 * The issuanceDate
 	 */

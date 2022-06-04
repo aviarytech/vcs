@@ -1,7 +1,7 @@
 {
 	"name": "@aviarytech/vcs",
 	"description": "Verifiable Credential Services for completing all of the required operations on VCs.",
-	"version": "0.2.20",
+	"version": "0.2.21",
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/"
 	},
