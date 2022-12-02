@@ -21,46 +21,45 @@ export interface ProofVerification {
 	error: string;
 }
 
+export enum IProofPurpose {
+  verificationMethod = 'verificationMethod',
+  assertionMethod = 'assertionMethod',
+  authentication = 'authentication',
+  keyAgreement = 'keyAgreement',
+  contractAgreement = 'contactAgreement',
+  capabilityInvocation = 'capabilityInvocation',
+  capabilityDelegation = 'capabilityDelegation',
+}
+
+export enum IProofType {
+  Ed25519Signature2018 = 'Ed25519Signature2018',
+  Ed25519Signature2020 = 'Ed25519Signature2020',
+  EcdsaSecp256k1Signature2019 = 'EcdsaSecp256k1Signature2019',
+  EcdsaSecp256k1RecoverySignature2020 = 'EcdsaSecp256k1RecoverySignature2020',
+  JsonWebSignature2020 = 'JsonWebSignature2020',
+  RsaSignature2018 = 'RsaSignature2018',
+  GpgSignature2020 = 'GpgSignature2020',
+  JcsEd25519Signature2020 = 'JcsEd25519Signature2020',
+  BbsBlsSignatureProof2020 = 'BbsBlsSignatureProof2020',
+  BbsBlsBoundSignatureProof2020 = 'BbsBlsBoundSignatureProof2020',
+}
+
 /**
  * A JSON-LD Linked Data proof.
  */
-export interface LinkedDataProof {
-	/**
-	 * Linked Data Signature Suite used to produce proof.
-	 */
-	type?: string;
-	/**
-	 * Date the proof was created.
-	 */
-	created?: string;
-	/**
-	 * Verification Method used to verify proof.
-	 */
-	verificationMethod?: string;
-	/**
-	 * The purpose of the proof to be used with verificationMethod.
-	 */
-	proofPurpose?: string;
-	/**
-	 * Detached JSON Web Signature
-	 */
-	jws?: string;
-	/**
-	 * challenge to prevent replay attacks
-	 */
-	challenge?: string;
-	/**
-	 * domain
-	 */
-	domain?: string;
-	/**
-	 * value
-	 */
-	proofValue?: string;
-	/**
-	 * nonce
-	 */
-	nonce?: number;
+ export interface LinkedDataProof {
+  type: IProofType | string // The proof type
+  created: string // The ISO8601 date-time string for creation
+  proofPurpose: IProofPurpose | string // The specific intent for the proof
+  verificationMethod: string // A set of parameters required to independently verify the proof
+  challenge?: string // A challenge to protect against replay attacks
+  domain?: string // A string restricting the (usage of a) proof to the domain and protects against replay attacks
+  proofValue?: string // One of any number of valid representations of proof values
+  jws?: string // JWS based proof
+  nonce?: string // Similar to challenge. A nonce to protect against replay attacks, used in some ZKP proofs
+  requiredRevealStatements?: string[] // The parts of the proof that must be revealed in a derived proof
+
+  [x: string]: string | string[] | undefined
 }
 
 export interface JWTCredential {
@@ -97,7 +96,7 @@ export interface JWTCredential {
 	 */
 	vc: {
 		'@context': Array<string> | string;
-		type: Array<string> | string;
+		type: string[];
 		credentialSubject: any;
 		[k: string]: any;
 	};
@@ -118,7 +117,7 @@ export interface Credential {
 	/**
 	 * The JSON-LD type of the credential.
 	 */
-	type: Array<string> | string;
+	type: string[];
 	issuer: { id: string, name?: string, image?: string, url?: string, type?: string } | string;
 	/**
 	 * The issuanceDate
@@ -145,6 +144,8 @@ export interface Credential {
 		id: string;
 		type: string;
 	};
+
+  [x: string]: unknown
 }
 
 /**
@@ -162,11 +163,13 @@ export interface Presentation {
 	/**
 	 * The JSON-LD type of the presentation.
 	 */
-	type: Array<string> | string;
+	type: string[];
 	/**
 	 * The Verifiable Credentials included in the presentation
 	 */
 	verifiableCredential: Array<VerifiableCredential> | VerifiableCredential;
+
+  [x: string]: unknown
 }
 
 export interface VerifiablePresentation extends Presentation {
