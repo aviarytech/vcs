@@ -19,13 +19,13 @@ export const checkCredential = (credential: Credential) => {
 
 	let issuanceDate = new Date(credential.issuanceDate).toISOString();
 	if (issuanceDate.slice(0, -5) + 'Z' !== credential.issuanceDate) {
-		throw new ValidationError('"issuanceDate" is not an ISO date or may contain milliseconds');
+		console.warn('"issuanceDate" is not an ISO date or may contain milliseconds');
 	}
 
 	if (credential.expirationDate) {
 		let expirationDate = new Date(credential.expirationDate).toISOString();
 		if (expirationDate.slice(0, -5) + 'Z' !== credential.expirationDate) {
-			throw new ValidationError('"expirationDate" is not an ISO date or may contain milliseconds');
+			console.warn('"expirationDate" is not an ISO date or may contain milliseconds');
 		}
 	}
 
